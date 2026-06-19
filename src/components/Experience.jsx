@@ -1,56 +1,406 @@
+import { useState } from "react";
+
+function CollapsibleCurriculum({ curriculum, color }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          all: "unset",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "#aaa",
+          marginBottom: open ? "14px" : "0",
+          transition: "color 0.2s ease",
+          userSelect: "none",
+        }}
+        onMouseEnter={e => e.currentTarget.style.color = color}
+        onMouseLeave={e => e.currentTarget.style.color = "#aaa"}
+      >
+        <span style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "16px",
+          height: "16px",
+          borderRadius: "50%",
+          border: "1.5px solid currentColor",
+          fontSize: "0.65rem",
+          transition: "transform 0.22s ease",
+          transform: open ? "rotate(180deg)" : "rotate(0deg)",
+        }}>▾</span>
+        What I Built · Curriculum Covered
+      </button>
+
+      {open && (
+        <div style={{ animation: "fadeSlideIn 0.22s ease" }}>
+          <div style={{
+            fontSize: "0.7rem",
+            fontStyle: "italic",
+            color: "#b0b0b0",
+            marginBottom: "14px",
+          }}>
+            Every topic below was implemented live — not just studied.
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {curriculum.map((group, gi) => (
+              <div key={gi}>
+                <div style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  color: color,
+                  marginBottom: "6px",
+                  letterSpacing: "0.05em",
+                }}>
+                  {group.group}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                  {group.topics.map((topic, ti) => (
+                    <span key={ti} style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 500,
+                      padding: "3px 9px",
+                      borderRadius: "999px",
+                      background: "#f5f5f7",
+                      border: "1px solid #e8e8ec",
+                      color: "#555",
+                    }}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const roles = [
+  {
+    id: "accenture",
+    company: "Accenture",
+    title: "Full-Stack Engineer → Data Engineer",
+    period: "Aug 2021 – Jul 2024",
+    color: "#29b0bc",
+    gradient: "linear-gradient(135deg, #29b0bc, #7fdbe2)",
+    kpis: [
+      { value: "87%", label: "Refresh Time Cut" },
+      { value: "7", label: "APAC Markets" },
+      { value: "6+", label: "Source Systems" },
+      { value: "3", label: "Enterprise Projects" },
+    ],
+    bullets: [
+      "Maintained and operated 60+ ETL pipelines serving Roche Diagnostics' APAC commercial, distributor, and finance data across 7 markets (Korea, Japan, Indonesia, Thailand, Taiwan, Vietnam, China)",
+      "Cut pipeline refresh time from 6–8 hours to ~45 minutes by redesigning full-refresh loads as watermark-based incremental extractions",
+      "Built an automated data reconciliation framework comparing source vs. Snowflake counts post-load — eliminating manual validation across all ingested objects",
+      "Sole ETL engineer for 3 years — owned both new pipeline delivery every sprint and daily operational incident response simultaneously",
+      "Integrated 6+ heterogeneous source systems — MS SQL Server, Oracle, SAP HANA, SFTP file servers, AWS S3, and distributor Excel files — into a single unified Snowflake warehouse",
+    ],
+    skills: [
+      "Talend", "Python", "SQL", "Snowflake", "MS SQL Server", "Oracle",
+      "SAP HANA", "AWS S3", "SFTP", "ETL", "Data Engineering", "Data Reconciliation",
+      "Incremental Loads", "Watermark-based Extraction", "PII Detection", "Presidio", "spaCy",
+    ],
+  },
+  {
+    id: "isa",
+    company: "SJSU – ISA",
+    title: "Generative AI Teaching & Research Assistant",
+    period: "Jan 2026 – May 2026",
+    color: "#f76493",
+    gradient: "linear-gradient(135deg, #f76493, #ffb0cc)",
+    kpis: [
+      { value: "14", label: "Live Code Demos" },
+      { value: "35+", label: "Grad Students Supported" },
+      { value: "100+", label: "Submissions Reviewed" },
+      { value: "8+", label: "Architectures Implemented" },
+    ],
+    bullets: [
+      "Implemented 14 live in-class walkthroughs covering architectures from CUDA kernels and feedforward nets up through Transformers, diffusion models, and multi-agent systems",
+      "Built working PyTorch implementations of GPT-style decoders, VAEs, GANs, DDPM/DDIM, SimCLR, and CycleGAN as reference code for 35 graduate students",
+      "Debugged and reviewed 100+ student implementations across training pipelines, attention mechanisms, fine-tuning loops, and RAG systems — developing deep diagnostic fluency across the full GenAI stack",
+      "Graded and provided feedback on assignments spanning LoRA/PEFT fine-tuning, knowledge distillation, multimodal RAG, CLIP-based retrieval, and Stable Diffusion fine-tuning",
+    ],
+    skills: [
+      "PyTorch", "Python", "CUDA", "Transformers", "Diffusion Models", "GANs",
+      "VAEs", "LoRA", "PEFT", "RAG", "LangChain", "Pinecone", "CLIP",
+      "Stable Diffusion", "Knowledge Distillation", "Quantization", "Multi-Agent Systems",
+    ],
+    curriculum: [
+      {
+        group: "Foundations",
+        topics: ["CUDA Programming", "PyTorch", "Neural Networks", "Backprop", "Word Embeddings", "NER"],
+      },
+      {
+        group: "Transformers & LLMs",
+        topics: ["Self-Attention from Scratch", "Causal Masking", "GPT Decoder", "BERT Tokenization", "Prompt Engineering", "Zero-Shot / CoT"],
+      },
+      {
+        group: "Generative Models",
+        topics: ["VAE", "GAN / DCGAN", "CycleGAN", "DDPM", "DDIM", "Classifier-Free Guidance", "Stable Diffusion Fine-tuning"],
+      },
+      {
+        group: "Fine-Tuning & Optimization",
+        topics: ["LoRA / PEFT", "Knowledge Distillation", "Quantization", "KV Cache", "Mixed Precision Training"],
+      },
+      {
+        group: "Retrieval & Agents",
+        topics: ["RAG Pipelines", "Vector Databases (Pinecone)", "Reranking", "LangChain Agents", "Multi-Agent Systems", "GraphRAG"],
+      },
+      {
+        group: "Multimodal",
+        topics: ["CLIP", "Text-to-Image", "Multimodal RAG", "Vision-Language Models"],
+      },
+    ],
+  },
+  {
+    id: "early",
+    company: "Early Roles",
+    title: "Android Dev Intern · Instructor",
+    period: "Oct 2020 – Dec 2020",
+    color: "#f29e38",
+    gradient: "linear-gradient(135deg, #f29e38, #ffd67a)",
+    kpis: [
+      { value: "40", label: "Students Taught" },
+      { value: "2", label: "Roles" },
+    ],
+    bullets: [
+      "Developed accessible Android UIs for differently-abled students",
+      "Taught full-stack development (HTML/CSS/JS, PHP, MySQL) to 40 students",
+      "Designed hands-on projects covering end-to-end application development",
+    ],
+    skills: [
+      "Android", "Java", "HTML", "CSS", "JavaScript", "PHP", "MySQL", "Full-Stack Development",
+    ],
+  },
+];
+
 export default function Experience() {
+  const [activeId, setActiveId] = useState("accenture");
+  const active = roles.find((r) => r.id === activeId);
+
   return (
     <section id="experience" className="section-experience">
       <h2>Experience</h2>
 
-      <div className="gantt-wrapper">
-        {/* Timeline header */}
-        <div className="gantt-header">
-          <span>2021</span>
-          <span>2022</span>
-          <span>2023</span>
-          <span>2024</span>
-          <span>Now</span>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "220px 1fr",
+        gap: "20px",
+        alignItems: "start",
+      }}>
+        {/* LEFT PANEL — role list */}
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}>
+          {roles.map((role) => {
+            const isActive = role.id === activeId;
+            return (
+              <button
+                key={role.id}
+                onClick={() => setActiveId(role.id)}
+                style={{
+                  all: "unset",
+                  cursor: "pointer",
+                  padding: "14px 16px",
+                  borderRadius: "14px",
+                  background: isActive ? "#fff" : "transparent",
+                  border: isActive ? `1.5px solid ${role.color}44` : "1.5px solid transparent",
+                  boxShadow: isActive ? `0 2px 16px ${role.color}22` : "none",
+                  transition: "all 0.22s ease",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {isActive && (
+                  <div style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "12px",
+                    bottom: "12px",
+                    width: "3px",
+                    borderRadius: "999px",
+                    background: role.gradient,
+                  }} />
+                )}
+                <div style={{
+                  paddingLeft: isActive ? "10px" : "0",
+                  transition: "padding 0.22s ease",
+                }}>
+                  <div style={{
+                    fontSize: "0.88rem",
+                    fontWeight: 700,
+                    color: isActive ? role.color : "#555",
+                    marginBottom: "3px",
+                    transition: "color 0.22s ease",
+                  }}>
+                    {role.company}
+                  </div>
+                  <div style={{
+                    fontSize: "0.72rem",
+                    color: "#999",
+                    lineHeight: 1.4,
+                  }}>
+                    {role.period}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Row 1 */}
-        <div className="gantt-row">
-          <div className="gantt-label">
-            <div className="gantt-label-company">Accenture</div>
-            <div className="gantt-label-role">Data Engineer</div>
-          </div>
-          <div className="gantt-track">
-            <div className="gantt-track-bg" />
-            <div className="gantt-bar gantt-bar-accenture">
-              Aug 2021 – Jul 2024
+        {/* RIGHT PANEL — detail card */}
+        <div
+          key={activeId}
+          style={{
+            background: "#fff",
+            borderRadius: "18px",
+            border: "1px solid rgba(0,0,0,0.06)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+            overflow: "hidden",
+            animation: "fadeSlideIn 0.25s ease",
+          }}
+        >
+          {/* Card header bar */}
+          <div style={{
+            background: active.gradient,
+            padding: "18px 28px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2px",
+          }}>
+            <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#fff" }}>
+              {active.company}
             </div>
-            <ul className="gantt-bullets">
-              <li>Built ETL pipelines using Python, SQL, and Azure Data Factory</li>
-              <li>Developed scalable data models and warehouse structures</li>
-              <li>Delivered analytics solutions for business stakeholders</li>
-            </ul>
+            <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.85)" }}>
+              {active.title}
+            </div>
+            <div style={{
+              display: "inline-block",
+              marginTop: "6px",
+              fontSize: "0.68rem",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              padding: "3px 10px",
+              borderRadius: "999px",
+              background: "rgba(255,255,255,0.25)",
+              color: "#fff",
+              width: "fit-content",
+            }}>
+              {active.period}
+            </div>
           </div>
-        </div>
 
-        {/* Row 2 */}
-        <div className="gantt-row" style={{ marginBottom: 0 }}>
-          <div className="gantt-label">
-            <div className="gantt-label-company">SJSU</div>
-            <div className="gantt-label-role">Graduate Research</div>
-          </div>
-          <div className="gantt-track">
-            <div className="gantt-track-bg" />
-            <div className="gantt-bar gantt-bar-sjsu">
-              Aug 2024 – Present
+          <div style={{ padding: "22px 28px" }}>
+            {/* KPI impact tiles */}
+            <div style={{ display: "flex", gap: "12px", marginBottom: "20px", flexWrap: "wrap" }}>
+              {active.kpis.map((kpi, i) => (
+                <div key={i} style={{
+                  flex: 1,
+                  minWidth: "80px",
+                  background: `${active.color}0d`,
+                  border: `1px solid ${active.color}30`,
+                  borderRadius: "12px",
+                  padding: "12px 16px",
+                  textAlign: "center",
+                }}>
+                  <div style={{
+                    fontSize: "1.6rem",
+                    fontWeight: 800,
+                    color: active.color,
+                    lineHeight: 1,
+                    marginBottom: "4px",
+                  }}>
+                    {kpi.value}
+                  </div>
+                  <div style={{
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#888",
+                    fontWeight: 600,
+                  }}>
+                    {kpi.label}
+                  </div>
+                </div>
+              ))}
             </div>
-            <ul className="gantt-bullets">
-              <li>Built LineageIQ, a data pipeline observability platform</li>
-              <li>Developed ELT pipelines for wildfire and air-quality analytics</li>
-              <li>Explored AI for data quality, anomaly detection, and lineage</li>
+
+            {/* Bullet points */}
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "22px" }}>
+              {active.bullets.map((b, i) => (
+                <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                  <span style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: active.color,
+                    flexShrink: 0,
+                    marginTop: "6px",
+                  }} />
+                  <span style={{ fontSize: "0.875rem", color: "#444", lineHeight: 1.6 }}>{b}</span>
+                </li>
+              ))}
             </ul>
+
+            {/* Skills tags */}
+            {active.skills && active.skills.length > 0 && (
+              <div style={{ marginBottom: active.curriculum ? "22px" : "0" }}>
+                <div style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "#aaa",
+                  marginBottom: "10px",
+                }}>
+                  Skills & Technologies
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                  {active.skills.map((skill, i) => (
+                    <span key={i} style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 600,
+                      padding: "4px 10px",
+                      borderRadius: "999px",
+                      background: `${active.color}12`,
+                      border: `1px solid ${active.color}35`,
+                      color: active.color,
+                    }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ISA Curriculum section — collapsible */}
+            {active.curriculum && (
+              <CollapsibleCurriculum curriculum={active.curriculum} color={active.color} />
+            )}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeSlideIn {
+          from { opacity: 0; transform: translateX(8px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 }

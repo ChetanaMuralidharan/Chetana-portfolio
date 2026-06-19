@@ -3,9 +3,11 @@ import Tile from "./Tile";
 
 function DonutChart() {
   const segments = [
-    { label: "Data Engineering", pct: 40, color: "#29b0bc" },
-    { label: "Analytics",        pct: 35, color: "#f76493" },
-    { label: "Applied AI",       pct: 25, color: "#f29e38" },
+    { label: "Data Engineering",  pct: 30, color: "#29b0bc" },
+    { label: "Analytics Eng",     pct: 20, color: "#f76493" },
+    { label: "Gen AI / AI Eng",   pct: 20, color: "#f29e38" },
+    { label: "ML / Data Science", pct: 20, color: "#a78bfa" },
+    { label: "SWE",               pct: 10, color: "#22c55e" },
   ];
 
   let cumulative = 0;
@@ -37,11 +39,96 @@ function DonutChart() {
         <text x="56" y="52" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Focus</text>
         <text x="56" y="65" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Split</text>
       </svg>
-      <div className="donut-legend">
+      {/* Two-column legend grid */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "6px 12px",
+        marginTop: "4px",
+      }}>
         {segments.map((s) => (
           <div className="donut-legend-item" key={s.label}>
             <div className="donut-dot" style={{ background: s.color }} />
-            <span style={{ fontSize: "0.8rem", color: "#555" }}>{s.label} — {s.pct}%</span>
+            <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label} — {s.pct}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const timelineSteps = [
+  { label: "B.E. CS",          sub: "2017–2021",      color: "#f29e38", icon: "🎓" },
+  { label: "Android Intern",   sub: "2020",            color: "#fb923c", icon: "📱" },
+  { label: "Instructor",       sub: "2020–2021",       color: "#60a5fa", icon: "👩‍🏫" },
+  { label: "Accenture",        sub: "2021–2024",       color: "#29b0bc", icon: "💼" },
+  { label: "Masters @ SJSU",   sub: "2024–2026",       color: "#a78bfa", icon: "🎓" },
+  { label: "ISA @ SJSU",       sub: "Jan–May 2026",    color: "#f76493", icon: "🧑‍🏫" },
+  { label: "Job Hunting",      sub: "Now",             color: "#22c55e", icon: "🚀", active: true },
+];
+
+function MiniTimeline() {
+  return (
+    <div style={{
+      marginTop: "16px",
+      background: "#fff",
+      borderRadius: "16px",
+      padding: "16px 20px",
+      border: "1px solid rgba(0,0,0,0.06)",
+      boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+    }}>
+      <div style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#aaa", marginBottom: "12px", fontWeight: 600 }}>
+        Journey at a Glance
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto", paddingBottom: "4px" }}>
+        {timelineSteps.map((step, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", flex: i < timelineSteps.length - 1 ? "1" : "0 0 auto" }}>
+            {/* Node */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", flexShrink: 0 }}>
+              <div style={{
+                width: step.active ? "38px" : "32px",
+                height: step.active ? "38px" : "32px",
+                borderRadius: "50%",
+                background: step.active
+                  ? `linear-gradient(135deg, ${step.color}, ${step.color}aa)`
+                  : `${step.color}18`,
+                border: `2px solid ${step.color}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: step.active ? "0.95rem" : "0.85rem",
+                boxShadow: step.active ? `0 0 0 4px ${step.color}22` : "none",
+                transition: "0.3s ease",
+                flexShrink: 0,
+              }}>
+                {step.icon}
+              </div>
+              <div style={{ textAlign: "center", minWidth: "60px" }}>
+                <div style={{
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  color: step.active ? step.color : "#1a1a1a",
+                  whiteSpace: "nowrap",
+                }}>
+                  {step.label}
+                </div>
+                <div style={{ fontSize: "0.58rem", color: "#999", whiteSpace: "nowrap" }}>
+                  {step.sub}
+                </div>
+              </div>
+            </div>
+            {/* Connector line */}
+            {i < timelineSteps.length - 1 && (
+              <div style={{
+                flex: 1,
+                height: "2px",
+                background: `linear-gradient(to right, ${step.color}66, ${timelineSteps[i+1].color}66)`,
+                minWidth: "12px",
+                marginBottom: "20px",
+                marginLeft: "2px",
+                marginRight: "2px",
+              }} />
+            )}
           </div>
         ))}
       </div>
@@ -51,45 +138,52 @@ function DonutChart() {
 
 export default function About() {
   return (
-    <section id="about" className="section-about">
-      <h2>About Me</h2>
+    <section id="about" className="section-about" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
+      <h2 style={{ marginBottom: "16px" }}>About Me</h2>
 
       {/* Top row: bio + donut */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", marginBottom: "24px" }}>
-        <div className="tile">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }}>
+        <div className="tile" style={{ padding: "16px 20px" }}>
           <h3>👩‍💻 Who I Am</h3>
-          <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.7, marginBottom: 10 }}>
-            Hi! I'm <strong>Chetana Muralidharan</strong>, a Data Engineer &
-            Analytics Engineer passionate about building clean, reliable, and
-            intelligent data systems.
+          <p style={{ fontSize: "0.85rem", color: "#555", lineHeight: 1.6, marginBottom: 8 }}>
+            I'm <strong>Chetana Muralidharan</strong> a Data Engineer, Analytics Engineer, and
+            AI builder with 3+ years of industry experience at Accenture and an M.S. in Applied Data Intelligence from SJSU.
           </p>
-          <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.7 }}>
-            I love transforming messy data into meaningful insights and designing
-            pipelines that are elegant, scalable, and observable.
+          <p style={{ fontSize: "0.85rem", color: "#555", lineHeight: 1.6, marginBottom: 8 }}>
+            I work across the full data stack: from raw ingestion and dbt-modeled warehouses to
+            LLM-powered pipelines and multi-agent systems. I don't just move data, I make it
+            intelligent, observable, and trustworthy.
+          </p>
+          <p style={{ fontSize: "0.85rem", color: "#555", lineHeight: 1.6 }}>
+            9 projects. 5 domains. One throughline: turning complex, messy data into systems
+            that actually work.
           </p>
         </div>
 
-        <div className="tile">
+        <div className="tile" style={{ padding: "16px 20px" }}>
           <h3>🎯 Focus Split</h3>
           <DonutChart />
         </div>
       </div>
 
-      {/* Bottom row: 3 colored KPI tiles */}
-      <div className="about-kpi-row">
-        <div className="kpi-tile-pink">
+      {/* KPI row */}
+      <div className="about-kpi-row" style={{ marginBottom: "0" }}>
+        <div className="kpi-tile-pink" style={{ padding: "14px 20px" }}>
           <div className="kpi-tile-number">3+</div>
           <div className="kpi-tile-label">Years Experience</div>
         </div>
-        <div className="kpi-tile-teal">
-          <div className="kpi-tile-number">SnowPro</div>
-          <div className="kpi-tile-label">Snowflake Certified</div>
+        <div className="kpi-tile-teal" style={{ padding: "14px 20px" }}>
+          <div className="kpi-tile-number">9</div>
+          <div className="kpi-tile-label">Projects Built</div>
         </div>
-        <div className="kpi-tile-yellow">
-          <div className="kpi-tile-number">3</div>
-          <div className="kpi-tile-label">Flagship Projects</div>
+        <div className="kpi-tile-yellow" style={{ padding: "14px 20px" }}>
+          <div className="kpi-tile-number">M.S.</div>
+          <div className="kpi-tile-label">CS · SJSU 2026</div>
         </div>
       </div>
+
+      {/* Timeline */}
+      <MiniTimeline />
     </section>
   );
 }

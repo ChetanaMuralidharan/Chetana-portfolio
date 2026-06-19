@@ -1,18 +1,17 @@
 import { useState } from "react";
 import projects from "../data/projects";
 
-const heroKpi = {
-  "lineageiq": { number: "17",   desc: "lineage nodes parsed" },
-  "smoke":     { number: "4M+",  desc: "environmental records" },
-  "weavenet":  { number: "517K", desc: "emails processed" },
-};
-
 export default function Projects() {
   const [role, setRole] = useState("all");
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_COUNT = 3;
 
   const filtered = role === "all"
     ? projects
     : projects.filter((p) => p.roles.includes(role));
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_COUNT);
+  const hasMore = filtered.length > INITIAL_COUNT;
 
   return (
     <section id="projects" className="section-projects">
@@ -23,7 +22,7 @@ export default function Projects() {
             <button
               key={r}
               className={`tab-btn ${role === r ? "active" : ""}`}
-              onClick={() => setRole(r)}
+              onClick={() => { setRole(r); setShowAll(false); }}
             >
               {r.toUpperCase()}
             </button>
@@ -32,31 +31,68 @@ export default function Projects() {
       </div>
 
       <div className="card-grid" style={{ marginTop: 24 }}>
-        {filtered.map((p) => {
-          const kpi = heroKpi[p.id] || { number: "—", desc: "" };
-          return (
-            <div key={p.id} className="project-tile">
-              <div className="project-kpi-banner">
-                <div className="project-kpi-number">{kpi.number}</div>
-                <div className="project-kpi-desc">{kpi.desc}</div>
-              </div>
-              <div className="project-body">
-                <div className="project-title">{p.title}</div>
-                <div className="project-summary">{p.summary}</div>
-                <ul className="project-kpis">
-                  {p.kpis.map((k, i) => <li key={i}>{k}</li>)}
-                </ul>
-                <div className="project-tech">{p.tech}</div>
-                <div className="role-tags">
-                  {p.roles.map((r) => (
-                    <span key={r} className="role-pill" data-role={r}>{r}</span>
-                  ))}
-                </div>
+        {visible.map((p) => (
+          <div key={p.id} className="project-tile">
+            {/* Project image banner */}
+            <div className="project-img-banner">
+              {p.image
+                ? <img
+                    src={p.image}
+                    alt={p.title}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                      padding: "10px",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                : <div className="project-img-placeholder">
+                    <span style={{ fontSize: "2rem" }}>{p.placeholderIcon || "📊"}</span>
+                  </div>
+              }
+            </div>
+            <div className="project-body">
+              <div className="project-title">{p.title}</div>
+              <div className="project-summary">{p.summary}</div>
+              <ul className="project-kpis">
+                {p.kpis.map((k, i) => <li key={i}>{k}</li>)}
+              </ul>
+              <div className="project-tech">{p.tech}</div>
+              <div className="role-tags">
+                {p.roles.map((r) => (
+                  <span key={r} className="role-pill" data-role={r}>{r}</span>
+                ))}
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
+
+      {hasMore && (
+        <div style={{ textAlign: "center", marginTop: "28px" }}>
+          <button
+            onClick={() => setShowAll(!showAll)}
+            style={{
+              background: "none",
+              border: "2px solid #f76493",
+              color: "#f76493",
+              borderRadius: "999px",
+              padding: "10px 32px",
+              fontSize: "0.85rem",
+              fontWeight: 700,
+              cursor: "pointer",
+              letterSpacing: "0.05em",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={e => { e.target.style.background = "#f76493"; e.target.style.color = "#fff"; }}
+            onMouseLeave={e => { e.target.style.background = "none"; e.target.style.color = "#f76493"; }}
+          >
+            {showAll ? "Show Less ↑" : `Show ${filtered.length - INITIAL_COUNT} More Projects ↓`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

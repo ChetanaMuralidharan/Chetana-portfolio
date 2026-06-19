@@ -1,111 +1,106 @@
 // src/data/skills.js
 
 export default {
-  "Programming Languages": {
+  "Programming Languages & Tools": {
     emoji: "💻",
     level: 8,
+    badge: "badge-teal",
     roles: ["all", "ai", "data-eng", "analytics", "swe"],
-    items: ["Python", "SQL", "Java"]
+    items: ["Python", "SQL", "Java", "JavaScript", "React",
+"Pandas", "NumPy", "Flask",
+"FastAPI",
+"Docker", "Git", "CI/CD",
+"Agile/Scrum"]
   },
 
-  "Machine Learning & AI": {
+   "Data Engineering": {
+    emoji: "🛠️",
+    level: 9,
+    badge: "badge-orange",
+    roles: ["data-eng", "analytics"],
+    items: [
+      "ETL/ELT Pipelines", "dbt", 
+      "Airflow",
+      "Talend", "CDC", "Spark", "Kafka", "HDFS",
+      "Data Warehousing",
+      "Dimensional Modeling",
+      "Data Lakes",
+      "Data Governance",
+      "Data Quality",
+    ]
+  },
+
+  "Machine Learning": {
     emoji: "🤖",
     level: 8,
+    badge: "badge-pink",
     roles: ["ai"],
     items: [
-      "LLMs",
-      "Agentic Workflows",
-      "Multi-Agent Systems",
-      "Prompt Engineering",
-      "RAG",
-      "GraphRAG",
-      "Semantic Search",
-      "Fine-Tuning (LoRA, PEFT)",
-      "LangChain",
-      "LangGraph",
-      "PyTorch",
-      "TensorFlow",
+      "PyTorch", "TensorFlow", "Scikit-learn", "OpenCV",
+      "Fine-Tuning",
       "Transformers",
       "Diffusion Models",
       "GANs",
       "Contrastive Learning",
       "Knowledge Distillation",
-      "ANN Search",
-      "Model Benchmarking",
-      "GPU Training & Inference",
-      "Quantization",
-      "Mixed Precision",
-      "Nvidia Toolkit"
+      "Model Benchmarking"
     ]
   },
 
-  "Data Engineering": {
-    emoji: "🛠️",
-    level: 9,
-    roles: ["data-eng", "analytics"],
-    items: [
-      "ETL/ELT Pipelines",
-      "CDC Pipelines",
-      "Data Integration",
-      "dbt",
-      "Airflow",
-      "Talend",
-      "Schema Validation",
-      "HDF5",
-      "Data Warehousing",
-      "Dimensional Modeling",
-      "Star/Snowflake Schema",
-      "Data Lakes",
-      "Data Governance",
-      "Data Quality Validation",
-      "Reusable Data Products"
-    ]
-  },
+ 
 
-  "Cloud & Storage": {
+  "Databases, Cloud Platfroms & Storage": {
     emoji: "☁️",
     level: 7,
+    badge: "badge-purple",
     roles: ["data-eng", "ai", "analytics"],
-    items: ["Snowflake", "AWS S3", "Oracle", "MySQL", "MongoDB", "Graph Databases"]
+    items: ["Snowflake",
+"PostgreSQL", "MySQL", "Oracle",
+"MongoDB", "AWS S3", "FAISS", "Pinecone", "Vector databases", "Graph Databases",]
   },
 
-  "Big Data & Streaming": {
+  "AI Engineering": {
     emoji: "📡",
     level: 7,
+    badge: "badge-teal",
     roles: ["data-eng", "ai"],
-    items: ["Apache Spark", "Spark Structured Streaming", "Kafka"]
+    items: [
+      "LLMs", "RAG", "GraphRAG",
+      "Agentic Workflows",
+      "Multi-Agent Systems",
+      "Prompt Engineering", "Agentic AI",
+      "LangChain",
+      "LangGraph", "Semantic Search", 
+      "GPU Training & Inference"]
   },
 
-  "Business Intelligence & Analytics": {
+  "Analytics & Visualization": {
     emoji: "📊",
     level: 8,
+    badge: "badge-pink",
     roles: ["analytics"],
     items: [
-      "Power BI",
-      "DAX",
-      "Dashboard Development",
-      "KPI Reporting",
-      "Data Visualization",
-      "Tableau",
-      "Analytical Reporting",
-      "Metrics Definition",
-      "KPI Development"
+      "Power BI", "Tableau", "DAX",  
+"Plotly", "Streamlit",
+"Matplotlib", "Seaborn",
+"Chart.js", "Metabase"
     ]
   },
 
-  "Backend & SWE": {
-    emoji: "🧩",
-    level: 7,
-    roles: ["swe", "ai", "data-eng"],
-    items: [
-      "FastAPI",
-      "REST APIs",
-      "JWT Auth",
-      "Docker",
-      "Git",
-      "CI/CD",
-      "Version Control",
-      "Agile/Scrum"
-    ]
-  }
+  // "Backend & SWE": {
+  //   emoji: "🧩",
+  //   level: 7,
+  //   badge: "badge-yellow",
+  //   roles: ["swe", "ai", "data-eng"],
+  //   items: [
+  //     "FastAPI",
+  //     "REST APIs",
+  //     "JWT Auth",
+  //     "Docker",
+  //     "Git",
+  //     "CI/CD",
+  //     "Version Control",
+  //     "Agile/Scrum"
+  //   ]
+  // }
 };

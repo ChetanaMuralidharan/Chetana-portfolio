@@ -12,8 +12,8 @@ export default function Hero() {
         <p>DATA ENGINEERING · ANALYTICS · APPLIED AI</p>
 
         <div className="buttons">
-          <a href="https://github.com/Chetana" className="btn">GitHub</a>
-          <a href="https://www.linkedin.com/in/ChetanaMuralidharan" className="btn">LinkedIn</a>
+          <a href="https://github.com/ChetanaMuralidharan" className="btn">GitHub</a>
+          <a href="https://www.linkedin.com/in/chetana-muralidharan" className="btn">LinkedIn</a>
           <a href="/resume.pdf" className="btn small">Resume</a>
         </div>
       </div>

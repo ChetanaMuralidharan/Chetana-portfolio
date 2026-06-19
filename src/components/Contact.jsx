@@ -6,30 +6,71 @@ export default function Contact() {
       <h2>Links & Contact</h2>
 
       <div className="contact-grid">
-        <Tile>
-          <div className="status-indicator">
-            <div className="status-dot" />
-            Open to opportunities
+        <Tile className="contact-card">
+          <div className="contact-card-top">
+            <div className="contact-icon-badge">💬</div>
+            
           </div>
-          <h3>Let's Connect</h3>
-          <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.6, marginBottom: 16 }}>
+
+          <h3 className="contact-card-title">Let's Connect</h3>
+          <p className="contact-card-desc">
             I'm always excited to talk about data platforms, analytics engineering, and applied AI.
           </p>
-          <ul className="stats-list">
-            <li><span>Email:</span> chetana.muralidharan.24@gmail.com</li>
-            <li><span>Location:</span> San Jose, CA</li>
-            <li><span>Response time:</span> &lt; 24 hrs</li>
-          </ul>
+
+          <div className="contact-info-list">
+            <div className="contact-info-row">
+              <span className="contact-info-icon">✉️</span>
+              <div>
+                <div className="contact-info-label">Email</div>
+                <div className="contact-info-value">chetana.muralidharan.24@gmail.com</div>
+              </div>
+            </div>
+            <div className="contact-info-row">
+              <span className="contact-info-icon">📍</span>
+              <div>
+                <div className="contact-info-label">Location</div>
+                <div className="contact-info-value">San Jose, CA</div>
+              </div>
+            </div>
+            
+          </div>
+
+          <a className="btn-contact" href="mailto:chetana.muralidharan.24@gmail.com">
+            Say Hello →
+          </a>
         </Tile>
 
-        <Tile>
-          <h3>Profiles</h3>
+        <Tile className="contact-card">
+          <div className="contact-card-top">
+            <div className="contact-icon-badge">🔗</div>
+            <span className="status-pill">
+              <span className="status-dot" />
+              Open to opportunities
+            </span>
+          </div>
+          
+          <h3 className="contact-card-title">Profiles</h3>
+          
           <div className="contact-links">
-            <a className="contact-link" href="https://github.com/Chetana" target="_blank" rel="noreferrer">
-              <span>🐙</span> GitHub
+            
+            <a  className="contact-link contact-link-github"
+              href="https://github.com/ChetanaMuralidharan"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="contact-link-icon">🐙</span>
+              <span>GitHub</span>
+              <span className="contact-link-arrow">→</span>
             </a>
-            <a className="contact-link" href="https://www.linkedin.com/in/ChetanaMuralidharan" target="_blank" rel="noreferrer">
-              <span>💼</span> LinkedIn
+            
+           <a   className="contact-link contact-link-linkedin"
+              href="https://www.linkedin.com/in/chetana-muralidharan"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="contact-link-icon">💼</span>
+              <span>LinkedIn</span>
+              <span className="contact-link-arrow">→</span>
             </a>
           </div>
         </Tile>
