@@ -2,7 +2,7 @@ export default [
   {
     "id": "lineageiq",
     "placeholderIcon": "🔗",
-    "image": "/lineageiq.png",
+    "image": "lineageiq.png",
     "title": "LineageIQ – Data Pipeline Observability & AI Blast Radius Engine",
     "roles": ["data-eng", "analytics", "ai"],
     "summary":
@@ -18,7 +18,7 @@ export default [
   {
     "id": "weavenet",
     "placeholderIcon": "🕸️",
-    "image": "/weavenet.png",
+    "image": "weavenet.png",
     "title": "WeaveNet – Graph Intelligence Engine for Enterprise Email Analytics",
     "roles": ["ai", "data-eng",  "swe"],
     "summary":
@@ -34,7 +34,7 @@ export default [
   {
     "id": "agentlens",
     "placeholderIcon": "🖼️",
-    "image": "/agentlens.png",
+    "image": "agentlens.png",
     "title": "AgentLens – Multimodal Multi‑Agent Image Understanding & Generation",
     "roles": ["ai", "ml", "swe"],
     "summary":
@@ -50,7 +50,7 @@ export default [
   {
     "id": "doculens",
     "placeholderIcon": "📄",
-    "image": "/doculens.png",
+    "image": "doculens.png",
     "title": "DocuLens – Multimodal RAG for Document Intelligence",
     "roles": ["ai", "ml", "swe"],
     "summary":
@@ -65,7 +65,7 @@ export default [
   {
     "id": "smoke-smog",
     "placeholderIcon": "🌫️",
-    "image": "/smoke-smog.png",
+    "image": "smoke-smog.png",
     "title": "Smoke & Smog – Fire Impact on Air Quality & Weather",
     "roles": ["data-eng", "analytics"],
     "summary":
@@ -82,7 +82,7 @@ export default [
   {
     "id": "guardnet",
     "placeholderIcon": "🎥",
-    "image": "/guardnet.png",
+    "image": "guardnet.png",
     "title": "GuardNet – Shoplifting Detection with Explainable LLM Summaries",
     "roles": ["ml", "ai", "swe"],
     "summary":
@@ -98,7 +98,7 @@ export default [
   {
     "id": "neurospeak",
     "placeholderIcon": "🧠",
-    "image": "/neurospeak.png",
+    "image": "neurospeak.png",
     "title": "NeuroSpeak – Brain‑to‑Text Neural Speech Decoding",
     "roles": ["ml", "ai"],
     "summary":
@@ -114,7 +114,7 @@ export default [
   {
     "id": "quakealert",
     "placeholderIcon": "🌎",
-    "image": "/quakealert.png",
+    "image": "quakealert.png",
     "title": "AI‑Powered Earthquake Prediction & Alerting System",
     "roles": ["data-eng", "ml", "analytics"],
     "summary":
@@ -130,7 +130,7 @@ export default [
   {
     "id": "travel-bot",
     "placeholderIcon": "✈️",
-    "image": "/travel-bot.png",
+    "image": "travel-bot.png",
     "title": "AI Travel Assistant – Full-Stack Planning Chatbot",
     "roles": ["swe"],
     "summary":
