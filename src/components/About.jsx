@@ -39,7 +39,6 @@ function DonutChart() {
         <text x="56" y="52" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Focus</text>
         <text x="56" y="65" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Split</text>
       </svg>
-      {/* Two-column legend grid */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -49,7 +48,8 @@ function DonutChart() {
         {segments.map((s) => (
           <div className="donut-legend-item" key={s.label}>
             <div className="donut-dot" style={{ background: s.color }} />
-            <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label} — {s.pct}%</span>
+            {/* <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label} — {s.pct}%</span> */}
+            <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label}</span>
           </div>
         ))}
       </div>
@@ -64,7 +64,7 @@ const timelineSteps = [
   { label: "Accenture",        sub: "2021–2024",       color: "#29b0bc", icon: "💼" },
   { label: "Masters @ SJSU",   sub: "2024–2026",       color: "#a78bfa", icon: "🎓" },
   { label: "ISA @ SJSU",       sub: "Jan–May 2026",    color: "#f76493", icon: "🧑‍🏫" },
-  { label: "Job Hunting",      sub: "Now",             color: "#22c55e", icon: "🚀", active: true },
+  { label: "To Be Continued...",      sub: "Now",             color: "#22c55e", icon: "🚀", active: true },
 ];
 
 function MiniTimeline() {
@@ -76,14 +76,24 @@ function MiniTimeline() {
       padding: "16px 20px",
       border: "1px solid rgba(0,0,0,0.06)",
       boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-    }}>
+      transition: "transform 0.25s ease, box-shadow 0.25s ease",
+    }}
+    onMouseEnter={e => {
+      e.currentTarget.style.transform = "translateY(-4px)";
+      e.currentTarget.style.boxShadow = "0 10px 32px rgba(0,0,0,0.09)";
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
+    }}
+    >
       <div style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#aaa", marginBottom: "12px", fontWeight: 600 }}>
         Journey at a Glance
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto", paddingBottom: "4px" }}>
         {timelineSteps.map((step, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", flex: i < timelineSteps.length - 1 ? "1" : "0 0 auto" }}>
-            {/* Node */}
+            {/* Node — no individual hover effect */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", flexShrink: 0 }}>
               <div style={{
                 width: step.active ? "38px" : "32px",
@@ -98,7 +108,6 @@ function MiniTimeline() {
                 justifyContent: "center",
                 fontSize: step.active ? "0.95rem" : "0.85rem",
                 boxShadow: step.active ? `0 0 0 4px ${step.color}22` : "none",
-                transition: "0.3s ease",
                 flexShrink: 0,
               }}>
                 {step.icon}
@@ -142,7 +151,7 @@ export default function About() {
       <h2 style={{ marginBottom: "16px" }}>About Me</h2>
 
       {/* Top row: bio + donut */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "14px" }}>
+      <div className="about-top-grid">
         <div className="tile" style={{ padding: "16px 20px" }}>
           <h3>👩‍💻 Who I Am</h3>
           <p style={{ fontSize: "0.85rem", color: "#555", lineHeight: 1.6, marginBottom: 8 }}>
@@ -184,6 +193,21 @@ export default function About() {
 
       {/* Timeline */}
       <MiniTimeline />
+
+      <style>{`
+        .about-top-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+          margin-bottom: 14px;
+        }
+
+        @media (max-width: 700px) {
+          .about-top-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
     </section>
   );
 }

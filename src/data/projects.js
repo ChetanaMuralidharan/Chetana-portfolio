@@ -3,6 +3,7 @@ export default [
     "id": "lineageiq",
     "placeholderIcon": "🔗",
     "image": "lineageiq.png",
+    "github": "https://github.com/ChetanaMuralidharan/LineageIQ",
     "title": "LineageIQ – Data Pipeline Observability & AI Blast Radius Engine",
     "roles": ["data-eng", "analytics", "ai"],
     "summary":
@@ -19,8 +20,9 @@ export default [
     "id": "weavenet",
     "placeholderIcon": "🕸️",
     "image": "weavenet.png",
+    "github": "https://github.com/ChetanaMuralidharan/WeaveNet",
     "title": "WeaveNet – Graph Intelligence Engine for Enterprise Email Analytics",
-    "roles": ["ai", "data-eng",  "swe"],
+    "roles": ["ai", "data-eng", "swe"],
     "summary":
       "517K enterprise emails hold the story of an organization. Keyword search can't read it. A graph can.",
     "tech": "Python · FastAPI · React Flow · Qwen2.5-14B · BAAI/BGE · HDBSCAN · FAISS · HNSW · ScaNN · NetworkX",
@@ -35,6 +37,7 @@ export default [
     "id": "agentlens",
     "placeholderIcon": "🖼️",
     "image": "agentlens.png",
+    "github": "https://github.com/ChetanaMuralidharan/AgentLens",
     "title": "AgentLens – Multimodal Multi‑Agent Image Understanding & Generation",
     "roles": ["ai", "ml", "swe"],
     "summary":
@@ -51,6 +54,7 @@ export default [
     "id": "doculens",
     "placeholderIcon": "📄",
     "image": "doculens.png",
+    "github": "https://github.com/ChetanaMuralidharan/DocuLens",
     "title": "DocuLens – Multimodal RAG for Document Intelligence",
     "roles": ["ai", "ml", "swe"],
     "summary":
@@ -66,6 +70,7 @@ export default [
     "id": "smoke-smog",
     "placeholderIcon": "🌫️",
     "image": "smoke-smog.png",
+    "github": "https://github.com/ChetanaMuralidharan/Smoke-and-Smog",
     "title": "Smoke & Smog – Fire Impact on Air Quality & Weather",
     "roles": ["data-eng", "analytics"],
     "summary":
@@ -78,11 +83,11 @@ export default [
       "✅ 15+ dbt quality tests keeping every transformation honest"
     ]
   },
-  
   {
     "id": "guardnet",
     "placeholderIcon": "🎥",
     "image": "guardnet.png",
+    "github": "https://github.com/ChetanaMuralidharan/GuardNet",
     "title": "GuardNet – Shoplifting Detection with Explainable LLM Summaries",
     "roles": ["ml", "ai", "swe"],
     "summary":
@@ -99,6 +104,7 @@ export default [
     "id": "neurospeak",
     "placeholderIcon": "🧠",
     "image": "neurospeak.png",
+    "github": "https://github.com/ChetanaMuralidharan/NeuroSpeak",
     "title": "NeuroSpeak – Brain‑to‑Text Neural Speech Decoding",
     "roles": ["ml", "ai"],
     "summary":
@@ -115,6 +121,7 @@ export default [
     "id": "quakealert",
     "placeholderIcon": "🌎",
     "image": "quakealert.png",
+    "github": "https://github.com/ChetanaMuralidharan/QuakeAlert",
     "title": "AI‑Powered Earthquake Prediction & Alerting System",
     "roles": ["data-eng", "ml", "analytics"],
     "summary":
@@ -131,6 +138,7 @@ export default [
     "id": "travel-bot",
     "placeholderIcon": "✈️",
     "image": "travel-bot.png",
+    "github": "https://github.com/ChetanaMuralidharan/AI-Travel-Assistant",
     "title": "AI Travel Assistant – Full-Stack Planning Chatbot",
     "roles": ["swe"],
     "summary":
@@ -142,5 +150,4 @@ export default [
       "JWT-based auth & sessions"
     ]
   }
-  
 ];

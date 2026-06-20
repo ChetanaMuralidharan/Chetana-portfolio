@@ -43,7 +43,7 @@ export default function Education() {
             <div className="education-icon-badge badge-be">🎓</div>
             <div className="education-header-text">
               <div className="education-degree">B.E., Computer Science & Engineering</div>
-              <div className="education-school">JSSATE Bangalore (VTU)</div>
+              <div className="education-school">Visvesvaraya Technological University</div>
             </div>
             <span className="education-gpa-badge gpa-be">CGPA 8.5/10.00</span>
           </div>
@@ -61,44 +61,6 @@ export default function Education() {
             ].map((c) => (
               <span className="education-pill" key={c}>{c}</span>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Certifications */}
-      <div className="certifications-wrap">
-        <div className="certifications-heading-row">
-          <h3 className="certifications-heading">Certifications</h3>
-          <div className="certifications-heading-line" />
-        </div>
-
-        <div className="certifications-grid">
-          <div className="cert-card cert-snowflake">
-            <div className="cert-icon-badge icon-snowflake">❄️</div>
-            <div className="cert-name">SnowPro Core</div>
-            <span className="cert-code code-snowflake">COF-C02</span>
-            <div className="cert-issuer">Snowflake</div>
-          </div>
-
-          <div className="cert-card cert-azure">
-            <div className="cert-icon-badge icon-azure">🗄️</div>
-            <div className="cert-name">Azure Data Fundamentals</div>
-            <span className="cert-code code-azure">DP-900</span>
-            <div className="cert-issuer">Microsoft</div>
-          </div>
-
-          <div className="cert-card cert-azure">
-            <div className="cert-icon-badge icon-azure">☁️</div>
-            <div className="cert-name">Azure Fundamentals</div>
-            <span className="cert-code code-azure">AZ-900</span>
-            <div className="cert-issuer">Microsoft</div>
-          </div>
-
-          <div className="cert-card cert-azure">
-            <div className="cert-icon-badge icon-azure">🤖</div>
-            <div className="cert-name">Azure AI Fundamentals</div>
-            <span className="cert-code code-azure">AI-900</span>
-            <div className="cert-issuer">Microsoft</div>
           </div>
         </div>
       </div>

@@ -72,7 +72,22 @@ function CollapsibleCurriculum({ curriculum, color }) {
                       background: "#f5f5f7",
                       border: "1px solid #e8e8ec",
                       color: "#555",
-                    }}>
+                      transition: "all 0.2s ease",
+                      cursor: "default",
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = `${color}18`;
+                      e.currentTarget.style.borderColor = `${color}55`;
+                      e.currentTarget.style.color = color;
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = "#f5f5f7";
+                      e.currentTarget.style.borderColor = "#e8e8ec";
+                      e.currentTarget.style.color = "#555";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    }}
+                    >
                       {topic}
                     </span>
                   ))}
@@ -188,44 +203,54 @@ const roles = [
 
 export default function Experience() {
   const [activeId, setActiveId] = useState("accenture");
+  const [hoveredId, setHoveredId] = useState(null);
   const active = roles.find((r) => r.id === activeId);
 
   return (
     <section id="experience" className="section-experience">
       <h2>Experience</h2>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "220px 1fr",
-        gap: "20px",
-        alignItems: "start",
-      }}>
+      <div className="exp-layout">
         {/* LEFT PANEL — role list */}
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "8px",
-        }}>
+        <div className="exp-left-panel">
           {roles.map((role) => {
             const isActive = role.id === activeId;
+            const isHovered = role.id === hoveredId;
             return (
               <button
                 key={role.id}
                 onClick={() => setActiveId(role.id)}
+                onMouseEnter={() => setHoveredId(role.id)}
+                onMouseLeave={() => setHoveredId(null)}
                 style={{
                   all: "unset",
                   cursor: "pointer",
                   padding: "14px 16px",
                   borderRadius: "14px",
-                  background: isActive ? "#fff" : "transparent",
-                  border: isActive ? `1.5px solid ${role.color}44` : "1.5px solid transparent",
-                  boxShadow: isActive ? `0 2px 16px ${role.color}22` : "none",
+                  background: isActive
+                    ? "#fff"
+                    : isHovered
+                    ? `${role.color}0e`
+                    : "transparent",
+                  border: isActive
+                    ? `1.5px solid ${role.color}44`
+                    : isHovered
+                    ? `1.5px solid ${role.color}33`
+                    : "1.5px solid transparent",
+                  boxShadow: isActive
+                    ? `0 2px 16px ${role.color}22`
+                    : isHovered
+                    ? `0 2px 10px ${role.color}15`
+                    : "none",
                   transition: "all 0.22s ease",
                   position: "relative",
                   overflow: "hidden",
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
                 }}
               >
-                {isActive && (
+                {(isActive || isHovered) && (
                   <div style={{
                     position: "absolute",
                     left: 0,
@@ -234,16 +259,17 @@ export default function Experience() {
                     width: "3px",
                     borderRadius: "999px",
                     background: role.gradient,
+                    opacity: isActive ? 1 : 0.5,
                   }} />
                 )}
                 <div style={{
-                  paddingLeft: isActive ? "10px" : "0",
+                  paddingLeft: isActive || isHovered ? "10px" : "0",
                   transition: "padding 0.22s ease",
                 }}>
                   <div style={{
                     fontSize: "0.88rem",
                     fontWeight: 700,
-                    color: isActive ? role.color : "#555",
+                    color: isActive ? role.color : isHovered ? role.color : "#555",
                     marginBottom: "3px",
                     transition: "color 0.22s ease",
                   }}>
@@ -265,14 +291,7 @@ export default function Experience() {
         {/* RIGHT PANEL — detail card */}
         <div
           key={activeId}
-          style={{
-            background: "#fff",
-            borderRadius: "18px",
-            border: "1px solid rgba(0,0,0,0.06)",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-            overflow: "hidden",
-            animation: "fadeSlideIn 0.25s ease",
-          }}
+          className="exp-detail-card"
         >
           {/* Card header bar */}
           <div style={{
@@ -316,7 +335,19 @@ export default function Experience() {
                   borderRadius: "12px",
                   padding: "12px 16px",
                   textAlign: "center",
-                }}>
+                  transition: "all 0.22s ease",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = `0 6px 18px ${active.color}25`;
+                  e.currentTarget.style.background = `${active.color}18`;
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.background = `${active.color}0d`;
+                }}
+                >
                   <div style={{
                     fontSize: "1.6rem",
                     fontWeight: 800,
@@ -379,7 +410,22 @@ export default function Experience() {
                       background: `${active.color}12`,
                       border: `1px solid ${active.color}35`,
                       color: active.color,
-                    }}>
+                      transition: "all 0.2s ease",
+                      cursor: "default",
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = active.color;
+                      e.currentTarget.style.color = "#fff";
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow = `0 4px 10px ${active.color}40`;
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = `${active.color}12`;
+                      e.currentTarget.style.color = active.color;
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                    >
                       {skill}
                     </span>
                   ))}
@@ -399,6 +445,64 @@ export default function Experience() {
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateX(8px); }
           to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .exp-layout {
+          display: grid;
+          // grid-template-columns: 160px 1fr;
+          grid-template-columns: 180px minmax(0, 1fr);
+          gap: 20px;
+          align-items: start;
+          overflow: hidden;
+        }
+
+        .exp-left-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          // overflow: hidden;
+          width: 140px;
+        }
+
+        .exp-detail-card {
+          background: #fff;
+          border-radius: 18px;
+          border: 1px solid rgba(0,0,0,0.06);
+          box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+          overflow: hidden;
+          animation: fadeSlideIn 0.25s ease;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          min-width:0;
+        }
+
+        .exp-detail-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+        }
+
+        @media (max-width: 700px) {
+          .exp-layout {
+            // grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: 160px minmax(0, 1fr);
+            gap: 20px;
+            align-items: start;
+            overflow: hidden;
+          }
+
+          .exp-left-panel {
+            flex-direction: row;
+            overflow-x: auto;
+            gap: 8px;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .exp-left-panel button {
+            flex-shrink: 0 !important;
+            width: auto !important;
+            min-width: 120px;
+          }
         }
       `}</style>
     </section>

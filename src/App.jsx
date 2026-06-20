@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
@@ -8,6 +9,8 @@ import Navbar from "./components/Navbar";
 import Education from "./components/Education";
 
 export default function App() {
+  const [activeRole, setActiveRole] = useState("all");
+
   return (
     <>
       <div className="global-waves">
@@ -20,8 +23,8 @@ export default function App() {
       <Hero />
       <About />
       <Experience />
-      <Projects />
-      <Skills />
+      <Projects activeRole={activeRole} setActiveRole={setActiveRole} />
+      <Skills activeRole={activeRole} />
       <Education />
       <Contact />
     </>
