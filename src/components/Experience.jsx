@@ -556,28 +556,32 @@ export default function Experience() {
         }
 
         @media (max-width: 700px) {
-          .exp-layout {
-            display: grid;
-            grid-template-columns: 160px minmax(0, 1fr);
-            gap: 20px;
-            align-items: start;
-            overflow: hidden;
-          }
-
-          .exp-left-panel {
-            flex-direction: row;
-            overflow-x: auto;
-            gap: 8px;
-            padding-bottom: 4px;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          .exp-left-panel button {
-            flex-shrink: 0 !important;
-            width: auto !important;
-            min-width: 120px;
-          }
+        .exp-layout {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          overflow: visible;
         }
+
+        .exp-left-panel {
+          flex-direction: row;
+          overflow-x: auto;
+          gap: 8px;
+          padding-bottom: 4px;
+          -webkit-overflow-scrolling: touch;
+          width: 100%;
+        }
+
+        .exp-left-panel button {
+          flex-shrink: 0 !important;
+          width: auto !important;
+          min-width: 120px;
+        }
+
+        .exp-detail-card {
+          width: 100%;
+        }
+      }
       `}</style>
     </section>
   );
