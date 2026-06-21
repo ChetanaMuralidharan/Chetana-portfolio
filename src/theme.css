@@ -598,10 +598,10 @@ body {
 }
 
 .role-pill[data-role="ai"]        { background: rgba(247,100,147,0.12); color: #b83265; }
-.role-pill[data-role="data-eng"]  { background: rgba(41,176,188,0.15);  color: #1a6f78; }
+.role-pill[data-role="data-eng"]  { background: rgba(41,176,188,0.15);  color: #2ec5d6; }
 .role-pill[data-role="analytics"] { background: rgba(255,183,51,0.18);  color: #b26a00; }
 .role-pill[data-role="swe"]       { background: rgba(140,120,200,0.15); color: #4b3c8a; }
-
+.role-pill[data-role="ml"]       { background: rgba(140,120,200,0.15); color: #0bb4f2; }
 /* ---------- TABS ---------- */
 .tabs {
   display: flex;

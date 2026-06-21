@@ -245,7 +245,7 @@ export default function About() {
         </div>
         <div className="kpi-tile-yellow" style={{ padding: "14px 20px" }}>
           <div className="kpi-tile-number">M.S.</div>
-          <div className="kpi-tile-label">CS · SJSU 2026</div>
+          <div className="kpi-tile-label">Applied Data Intelligence · SJSU 2026</div>
         </div>
       </div>
 

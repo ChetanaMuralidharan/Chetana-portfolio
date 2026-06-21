@@ -45,7 +45,7 @@ export default function Education() {
               <div className="education-degree">B.E., Computer Science & Engineering</div>
               <div className="education-school">Visvesvaraya Technological University</div>
             </div>
-            <span className="education-gpa-badge gpa-be">CGPA 8.5/10.00</span>
+            <span className="education-gpa-badge gpa-be">GPA 8.5/10.00</span>
           </div>
           <div className="education-meta">📍 Karnataka, India · Aug 2017 – Aug 2021</div>
           <div className="education-pills-wrap" style={{ marginTop: 14 }}>
