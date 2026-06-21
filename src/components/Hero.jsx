@@ -19,12 +19,12 @@ function ResumeDropdown() {
     {
       label: "Data & Analytics Engineer",
       sub: "ETL · Snowflake · dbt · Airflow",
-      href: "/resume-de.pdf",
+      href: "./resume-de.pdf",
     },
     {
       label: "AI Engineer · ML Engineer",
       sub: "LLMs · RAG · Agents · PyTorch",
-      href: "/resume-aiml.pdf",
+      href: "./resume-aiml.pdf",
     },
   ];
 

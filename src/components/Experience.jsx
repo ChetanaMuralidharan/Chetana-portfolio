@@ -274,7 +274,7 @@ const roles = [
 ];
 
 export default function Experience() {
-  const [activeId, setActiveId] = useState("accenture");
+  const [activeId, setActiveId] = useState("isa");
   const [hoveredId, setHoveredId] = useState(null);
   const active = roles.find((r) => r.id === activeId);
 
