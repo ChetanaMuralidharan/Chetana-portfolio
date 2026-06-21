@@ -1,58 +1,116 @@
 import DashboardRow from "./DashboardRow";
 import Tile from "./Tile";
 
-function DonutChart() {
-  const segments = [
-    { label: "Data Engineering",  pct: 30, color: "#29b0bc" },
-    { label: "Analytics Eng",     pct: 20, color: "#f76493" },
-    { label: "Gen AI / AI Eng",   pct: 20, color: "#f29e38" },
-    { label: "ML / Data Science", pct: 20, color: "#a78bfa" },
-    { label: "SWE",               pct: 10, color: "#22c55e" },
+function SkillRadar() {
+  const axes = [
+    { label: "Data Engineering",  value: 90, color: "#29b0bc" },
+    { label: "Analytics Eng",     value: 80, color: "#f76493" },
+    { label: "Gen AI / AI Eng",   value: 85, color: "#f29e38" },
+    { label: "ML / Data Science", value: 70, color: "#a78bfa" },
+    { label: "SWE",               value: 75, color: "#22c55e" },
   ];
 
-  let cumulative = 0;
-  const r = 42, cx = 56, cy = 56, strokeW = 14;
-  const circumference = 2 * Math.PI * r;
+  const cx = 110, cy = 110, maxR = 80;
+  const n = axes.length;
 
-  const slices = segments.map((s) => {
-    const dashArray = `${(s.pct / 100) * circumference} ${circumference}`;
-    const rotation = (cumulative / 100) * 360 - 90;
-    cumulative += s.pct;
-    return { ...s, dashArray, rotation };
+  const angleOf = (i) => (Math.PI * 2 * i) / n - Math.PI / 2;
+
+  const pointOnAxis = (i, r) => ({
+    x: cx + r * Math.cos(angleOf(i)),
+    y: cy + r * Math.sin(angleOf(i)),
   });
 
+  // Grid rings
+  const rings = [0.25, 0.5, 0.75, 1];
+
+  const ringPath = (frac) => {
+    return axes
+      .map((_, i) => {
+        const { x, y } = pointOnAxis(i, maxR * frac);
+        return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+      })
+      .join(" ") + " Z";
+  };
+
+  // Data polygon
+  const dataPath = axes
+    .map((a, i) => {
+      const { x, y } = pointOnAxis(i, maxR * (a.value / 100));
+      return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+    })
+    .join(" ") + " Z";
+
   return (
-    <div className="donut-tile">
-      <svg width="112" height="112" viewBox="0 0 112 112">
-        {slices.map((s, i) => (
-          <circle
-            key={i}
-            cx={cx} cy={cy} r={r}
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+      <svg width="240" height="240" viewBox="0 0 220 220">
+        {/* Grid rings */}
+        {rings.map((frac, ri) => (
+          <path
+            key={ri}
+            d={ringPath(frac)}
             fill="none"
-            stroke={s.color}
-            strokeWidth={strokeW}
-            strokeDasharray={s.dashArray}
-            strokeDashoffset="0"
-            transform={`rotate(${s.rotation} ${cx} ${cy})`}
+            stroke="#e8e8ec"
+            strokeWidth="1.5"
           />
         ))}
-        <text x="56" y="52" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Focus</text>
-        <text x="56" y="65" textAnchor="middle" fontSize="9" fill="#999" fontFamily="DM Sans, system-ui">Split</text>
+
+        {/* Axis spokes */}
+        {axes.map((_, i) => {
+          const outer = pointOnAxis(i, maxR);
+          return (
+            <line
+              key={i}
+              x1={cx} y1={cy}
+              x2={outer.x} y2={outer.y}
+              stroke="#e8e8ec"
+              strokeWidth="1.5"
+            />
+          );
+        })}
+
+        {/* Data area */}
+        <path
+          d={dataPath}
+          fill="rgba(41,176,188,0.12)"
+          stroke="#29b0bc"
+          strokeWidth="2.5"
+          strokeLinejoin="round"
+        />
+
+        {/* Colored dots on each axis */}
+        {axes.map((a, i) => {
+          const { x, y } = pointOnAxis(i, maxR * (a.value / 100));
+          return (
+            <circle key={i} cx={x} cy={y} r="5" fill={a.color} stroke="#fff" strokeWidth="1.5" />
+          );
+        })}
+
+        {/* Axis labels */}
+        {axes.map((a, i) => {
+          const labelR = maxR + 20;
+          const { x, y } = pointOnAxis(i, labelR);
+          const angle = angleOf(i) * (180 / Math.PI);
+          return (
+            <text
+              key={i}
+              x={x}
+              y={y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="10"
+              fontWeight="600"
+              fill={a.color}
+              fontFamily="DM Sans, system-ui"
+            >
+              {a.label}
+            </text>
+          );
+        })}
       </svg>
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "6px 12px",
-        marginTop: "4px",
-      }}>
-        {segments.map((s) => (
-          <div className="donut-legend-item" key={s.label}>
-            <div className="donut-dot" style={{ background: s.color }} />
-            {/* <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label} — {s.pct}%</span> */}
-            <span style={{ fontSize: "0.75rem", color: "#555" }}>{s.label}</span>
-          </div>
-        ))}
-      </div>
+
+      {/* <div style={{ fontSize: "0.68rem", color: "#aaa", fontStyle: "italic", textAlign: "center" }}>
+        Depth across domains — not time allocation
+      </div> */}
     </div>
   );
 }
@@ -150,7 +208,7 @@ export default function About() {
     <section id="about" className="section-about" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
       <h2 style={{ marginBottom: "16px" }}>About Me</h2>
 
-      {/* Top row: bio + donut */}
+      {/* Top row: bio + radar */}
       <div className="about-top-grid">
         <div className="tile" style={{ padding: "16px 20px" }}>
           <h3>👩‍💻 Who I Am</h3>
@@ -170,8 +228,8 @@ export default function About() {
         </div>
 
         <div className="tile" style={{ padding: "16px 20px" }}>
-          <h3>🎯 Focus Split</h3>
-          <DonutChart />
+          <h3>📡 Domain Depth</h3>
+          <SkillRadar />
         </div>
       </div>
 

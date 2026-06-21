@@ -86,6 +86,20 @@ export default function Skills({ activeRole = "all" }) {
             <span className="cert-code code-azure">AI-900</span>
             <div className="cert-issuer">Microsoft</div>
           </div>
+
+          <div className="cert-card cert-azure">
+            <div className="cert-icon-badge icon-azure">⚡</div>
+            <div className="cert-name">Power Platform Fundamentals</div>
+            <span className="cert-code code-azure">PL-900</span>
+            <div className="cert-issuer">Microsoft</div>
+          </div>
+
+          <div className="cert-card cert-azure">
+            <div className="cert-icon-badge icon-azure">🔐</div>
+            <div className="cert-name">Security, Compliance & Identity Fundamentals</div>
+            <span className="cert-code code-azure">SC-900</span>
+            <div className="cert-issuer">Microsoft</div>
+          </div>
         </div>
       </div>
     </section>

@@ -1161,12 +1161,19 @@ body {
 }
 
 .certifications-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* display: grid; */
+  /* grid-template-columns: repeat(4, 1fr); */
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-items: center;
+  justify-content: center;  /* ADD THIS LINE */
 }
 
 .cert-card {
+  width: calc(25% - 16px);  /* adjust 16px to match your gap */
+  min-width: 180px;
+  max-width: 240px;
   border-radius: 18px;
   padding: 30px 20px;
   text-align: center;

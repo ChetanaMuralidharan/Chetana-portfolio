@@ -101,37 +101,75 @@ function CollapsibleCurriculum({ curriculum, color }) {
   );
 }
 
+function CollapsibleExtra({ extraBullets, color }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          all: "unset",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          fontSize: "0.7rem",
+          fontWeight: 700,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "#aaa",
+          marginBottom: open ? "14px" : "0",
+          transition: "color 0.2s ease",
+          userSelect: "none",
+        }}
+        onMouseEnter={e => e.currentTarget.style.color = color}
+        onMouseLeave={e => e.currentTarget.style.color = "#aaa"}
+      >
+        <span style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "16px",
+          height: "16px",
+          borderRadius: "50%",
+          border: "1.5px solid currentColor",
+          fontSize: "0.65rem",
+          transition: "transform 0.22s ease",
+          transform: open ? "rotate(180deg)" : "rotate(0deg)",
+        }}>▾</span>
+        {open ? "Show Less" : "Read More"}
+      </button>
+
+      {open && (
+        <div style={{ animation: "fadeSlideIn 0.22s ease" }}>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            {extraBullets.map((b, i) => (
+              <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                <span style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  background: color,
+                  flexShrink: 0,
+                  marginTop: "6px",
+                  opacity: 0.5,
+                }} />
+                <span style={{ fontSize: "0.875rem", color: "#444", lineHeight: 1.6 }}>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const roles = [
-  {
-    id: "accenture",
-    company: "Accenture",
-    title: "Full-Stack Engineer → Data Engineer",
-    period: "Aug 2021 – Jul 2024",
-    color: "#29b0bc",
-    gradient: "linear-gradient(135deg, #29b0bc, #7fdbe2)",
-    kpis: [
-      { value: "87%", label: "Refresh Time Cut" },
-      { value: "7", label: "APAC Markets" },
-      { value: "6+", label: "Source Systems" },
-      { value: "3", label: "Enterprise Projects" },
-    ],
-    bullets: [
-      "Maintained and operated 60+ ETL pipelines serving Roche Diagnostics' APAC commercial, distributor, and finance data across 7 markets (Korea, Japan, Indonesia, Thailand, Taiwan, Vietnam, China)",
-      "Cut pipeline refresh time from 6–8 hours to ~45 minutes by redesigning full-refresh loads as watermark-based incremental extractions",
-      "Built an automated data reconciliation framework comparing source vs. Snowflake counts post-load — eliminating manual validation across all ingested objects",
-      "Sole ETL engineer for 3 years — owned both new pipeline delivery every sprint and daily operational incident response simultaneously",
-      "Integrated 6+ heterogeneous source systems — MS SQL Server, Oracle, SAP HANA, SFTP file servers, AWS S3, and distributor Excel files — into a single unified Snowflake warehouse",
-    ],
-    skills: [
-      "Talend", "Python", "SQL", "Snowflake", "MS SQL Server", "Oracle",
-      "SAP HANA", "AWS S3", "SFTP", "ETL", "Data Engineering", "Data Reconciliation",
-      "Incremental Loads", "Watermark-based Extraction", "PII Detection", "Presidio", "spaCy",
-    ],
-  },
   {
     id: "isa",
     company: "SJSU – ISA",
-    title: "Generative AI Teaching & Research Assistant",
+    title: "Generative Models - Instructional Student Assistant",
     period: "Jan 2026 – May 2026",
     color: "#f76493",
     gradient: "linear-gradient(135deg, #f76493, #ffb0cc)",
@@ -179,6 +217,40 @@ const roles = [
       },
     ],
   },
+  {
+    id: "accenture",
+    company: "Accenture",
+    title: "Full-Stack Engineer Analyst (Data Engineer)",
+    period: "Aug 2021 – Jul 2024",
+    color: "#29b0bc",
+    gradient: "linear-gradient(135deg, #29b0bc, #7fdbe2)",
+    kpis: [
+      { value: "87%", label: "Refresh Time Cut" },
+      { value: "7", label: "APAC Markets" },
+      { value: "6+", label: "Source Systems" },
+      { value: "3", label: "Enterprise Projects" },
+    ],
+    bullets: [
+      "Maintained and operated 60+ ETL pipelines serving Roche Diagnostics' APAC commercial, distributor, and finance data across 7 markets (Korea, Japan, Indonesia, Thailand, Taiwan, Vietnam, China)",
+      "Cut pipeline refresh time from 6–8 hours to ~45 minutes by redesigning full-refresh loads as watermark-based incremental extractions",
+      "Built an automated data reconciliation framework comparing source vs. Snowflake counts post-load — eliminating manual validation across all ingested objects",
+      "Sole ETL engineer for 3 years — owned both new pipeline delivery every sprint and daily operational incident response simultaneously",
+      "Integrated 6+ heterogeneous source systems — MS SQL Server, Oracle, SAP HANA, SFTP file servers, AWS S3, and distributor Excel files — into a single unified Snowflake warehouse",
+    ],
+    extraBullets: [
+      "Designed and implemented a PII detection layer using Microsoft Presidio and spaCy to automatically flag sensitive fields across incoming distributor data feeds before warehouse ingestion",
+      "Collaborated with cross-functional stakeholders across APAC time zones to gather requirements, validate business logic, and sign off on data quality thresholds for each market",
+      "Wrote comprehensive pipeline documentation and runbooks, reducing onboarding time for new team members and enabling smoother handoffs during business continuity planning",
+      "Participated in sprint ceremonies as the sole data engineer embedded in a scrum team, balancing feature delivery with operational SLAs and incident SLOs simultaneously",
+      "Proactively identified and resolved schema drift issues from upstream ERP systems (SAP HANA, Oracle) that would have caused silent data corruption without source-side change detection logic",
+    ],
+    skills: [
+      "Talend", "Python", "SQL", "Snowflake", "MS SQL Server", "Oracle",
+      "SAP HANA", "AWS S3", "SFTP", "ETL", "Data Engineering", "Data Reconciliation",
+      "Incremental Loads", "Watermark-based Extraction", "PII Detection", "Presidio", "spaCy",
+    ],
+  },
+  
   {
     id: "early",
     company: "Early Roles",
@@ -371,7 +443,7 @@ export default function Experience() {
             </div>
 
             {/* Bullet points */}
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "22px" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "16px" }}>
               {active.bullets.map((b, i) => (
                 <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <span style={{
@@ -387,9 +459,14 @@ export default function Experience() {
               ))}
             </ul>
 
+            {/* Expand/collapse extra bullets — Accenture only */}
+            {active.extraBullets && (
+              <CollapsibleExtra extraBullets={active.extraBullets} color={active.color} />
+            )}
+
             {/* Skills tags */}
             {active.skills && active.skills.length > 0 && (
-              <div style={{ marginBottom: active.curriculum ? "22px" : "0" }}>
+              <div style={{ marginTop: "22px", marginBottom: active.curriculum ? "22px" : "0" }}>
                 <div style={{
                   fontSize: "0.7rem",
                   fontWeight: 700,
@@ -449,7 +526,6 @@ export default function Experience() {
 
         .exp-layout {
           display: grid;
-          // grid-template-columns: 160px 1fr;
           grid-template-columns: 180px minmax(0, 1fr);
           gap: 20px;
           align-items: start;
@@ -460,7 +536,6 @@ export default function Experience() {
           display: flex;
           flex-direction: column;
           gap: 8px;
-          // overflow: hidden;
           width: 140px;
         }
 
@@ -482,7 +557,6 @@ export default function Experience() {
 
         @media (max-width: 700px) {
           .exp-layout {
-            // grid-template-columns: 1fr;
             display: grid;
             grid-template-columns: 160px minmax(0, 1fr);
             gap: 20px;
