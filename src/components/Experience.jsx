@@ -261,10 +261,28 @@ const roles = [
       { value: "40", label: "Students Taught" },
       { value: "2", label: "Roles" },
     ],
-    bullets: [
-      "Developed accessible Android UIs for differently-abled students",
-      "Taught full-stack development (HTML/CSS/JS, PHP, MySQL) to 40 students",
-      "Designed hands-on projects covering end-to-end application development",
+    bullets: [],
+    subRoles: [
+      {
+        company: "VAAP Technologies Inc",
+        title: "Android Developer Intern",
+        period: "Oct 2020 – Dec 2020 · Remote, Virginia",
+        bullets: [
+          "Built end-to-end Android workflows in Android Studio using real-time server data to render dynamic, data-driven layouts",
+          "Designed accessible, user-friendly interfaces for an Android learning application tailored to differently abled children using Adobe XD",
+          "Collaborated with teammates to deliver a complete application supporting inclusive education workflows",
+        ],
+      },
+      {
+        company: "Prinston Smart Engineers",
+        title: "Full-Stack Developer Instructor",
+        period: "Oct 2020 – Nov 2020 · Remote, India",
+        bullets: [
+          "Designed and delivered a month-long full-stack curriculum for 40 students covering HTML, CSS, JavaScript, PHP, and MySQL from frontend through backend",
+          "Guided students through a hands-on capstone project where they built a complete application end to end, applying every concept taught during the course",
+          "Taught backend fundamentals using PHP for server-side logic and MySQL for database design, query writing, and data management",
+        ],
+      },
     ],
     skills: [
       "Android", "Java", "HTML", "CSS", "JavaScript", "PHP", "MySQL", "Full-Stack Development",
@@ -442,7 +460,7 @@ export default function Experience() {
             </div>
 
             {/* Bullet points */}
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "16px" }}>
+            {/* <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "16px" }}>
               {active.bullets.map((b, i) => (
                 <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                   <span style={{
@@ -456,7 +474,72 @@ export default function Experience() {
                   <span style={{ fontSize: "0.875rem", color: "#444", lineHeight: 1.6 }}>{b}</span>
                 </li>
               ))}
-            </ul>
+            </ul> */}
+
+            {/* Bullet points or sub-roles */}
+            {active.subRoles ? (
+              <div style={{ display: "flex", flexDirection: "column", gap: "22px", marginBottom: "16px" }}>
+                {active.subRoles.map((role, ri) => (
+                  <div key={ri}>
+                    <div style={{ marginBottom: "10px" }}>
+                      <div style={{ fontSize: "0.88rem", fontWeight: 700, color: active.color, marginBottom: "2px" }}>
+                        {role.company}
+                      </div>
+                      <div style={{ fontSize: "0.78rem", color: "#666", fontWeight: 500, marginBottom: "2px" }}>
+                        {role.title}
+                      </div>
+                      <div style={{
+                        fontSize: "0.68rem",
+                        color: "#999",
+                        fontWeight: 600,
+                        letterSpacing: "0.06em",
+                      }}>
+                        {role.period}
+                      </div>
+                    </div>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+                      {role.bullets.map((b, i) => (
+                        <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                          <span style={{
+                            width: "6px",
+                            height: "6px",
+                            borderRadius: "50%",
+                            background: active.color,
+                            flexShrink: 0,
+                            marginTop: "6px",
+                            opacity: 0.7,
+                          }} />
+                          <span style={{ fontSize: "0.875rem", color: "#444", lineHeight: 1.6 }}>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {ri < active.subRoles.length - 1 && (
+                      <div style={{
+                        marginTop: "18px",
+                        borderBottom: `1px solid ${active.color}22`,
+                      }} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px", marginBottom: "16px" }}>
+                {active.bullets.map((b, i) => (
+                  <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                    <span style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: active.color,
+                      flexShrink: 0,
+                      marginTop: "6px",
+                    }} />
+                    <span style={{ fontSize: "0.875rem", color: "#444", lineHeight: 1.6 }}>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
 
             {/* Expand/collapse extra bullets — Accenture only */}
             {active.extraBullets && (
