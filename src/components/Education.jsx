@@ -10,10 +10,10 @@ export default function Education() {
           <div className="education-card-header">
             <div className="education-icon-badge badge-ms">🎓</div>
             <div className="education-header-text">
-              <div className="education-degree">M.S., Data Analytics</div>
+              <div className="education-degree">M.S., Applied Data Intelligence</div>
               <div className="education-school">San José State University</div>
             </div>
-            <span className="education-gpa-badge gpa-ms">GPA 3.85/4.00</span>
+            <span className="education-gpa-badge gpa-ms">GPA 3.88/4.00</span>
           </div>
           <div className="education-meta">📍 San Jose, CA · Aug 2024 – May 2026</div>
           <p className="education-desc">
