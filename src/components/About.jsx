@@ -222,7 +222,7 @@ export default function About() {
             intelligent, observable, and trustworthy.
           </p>
           <p style={{ fontSize: "0.85rem", color: "#555", lineHeight: 1.6 }}>
-            9 projects. 5 domains. One throughline: turning complex, messy data into systems
+            11 projects. 5 domains. One throughline: turning complex, messy data into systems
             that actually work.
           </p>
         </div>
@@ -240,7 +240,7 @@ export default function About() {
           <div className="kpi-tile-label">Years Experience</div>
         </div>
         <div className="kpi-tile-teal" style={{ padding: "14px 20px" }}>
-          <div className="kpi-tile-number">9</div>
+          <div className="kpi-tile-number">11</div>
           <div className="kpi-tile-label">Projects Built</div>
         </div>
         <div className="kpi-tile-yellow" style={{ padding: "14px 20px" }}>

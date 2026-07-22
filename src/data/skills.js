@@ -22,6 +22,7 @@ export default {
       "ETL/ELT Pipelines", "dbt", 
       "Airflow",
       "Talend", "CDC", "Spark", "Kafka", "HDFS",
+      "Great Expectations",
       "Data Warehousing",
       "Dimensional Modeling",
       "Data Lakes",
@@ -36,43 +37,42 @@ export default {
     badge: "badge-pink",
     roles: ["ai"],
     items: [
-      "PyTorch", "TensorFlow", "Scikit-learn", "OpenCV",
-      "Fine-Tuning",
+      "PyTorch", "TensorFlow", "Scikit-learn",
+      "Fine-Tuning", "Hyperparameter Tuning",
+      "XGBoost", "SHAP", "WOE/IV",
       "Transformers",
       "Diffusion Models",
       "GANs",
       "Contrastive Learning",
-      "Knowledge Distillation",
       "Model Benchmarking"
     ]
   },
 
- 
+ "AI Engineering": {
+    emoji: "📡",
+    level: 7,
+    badge: "badge-purple",
+    roles: ["data-eng", "ai"],
+    items: [
+      "LLMs", "RAG", "Hybrid RAG",
+      "Agentic Workflows", "Model Context Protocol  MCP",
+      "Multi-Agent Systems", "LangChain",
+      "LangGraph",
+      "Prompt Engineering", "Agentic AI",
+      "GPU Training & Inference"]
+  },
 
   "Databases, Cloud Platfroms & Storage": {
     emoji: "☁️",
     level: 7,
-    badge: "badge-purple",
+    badge: "badge-teal",
     roles: ["data-eng", "ai", "analytics"],
     items: ["Snowflake",
-"PostgreSQL", "MySQL", "Oracle",
-"MongoDB", "AWS S3", "FAISS", "Pinecone", "Vector databases", "Graph Databases",]
+"PostgreSQL", "pgvector", "DuckDB", "MySQL", "Oracle",
+"MongoDB", "AWS S3", "FAISS", "Pinecone", "Vector databases", "Graph Databases"]
   },
 
-  "AI Engineering": {
-    emoji: "📡",
-    level: 7,
-    badge: "badge-teal",
-    roles: ["data-eng", "ai"],
-    items: [
-      "LLMs", "RAG", "GraphRAG",
-      "Agentic Workflows",
-      "Multi-Agent Systems",
-      "Prompt Engineering", "Agentic AI",
-      "LangChain",
-      "LangGraph", "Semantic Search", 
-      "GPU Training & Inference"]
-  },
+  
 
   "Analytics & Visualization": {
     emoji: "📊",
@@ -83,7 +83,7 @@ export default {
       "Power BI", "Tableau", "DAX",  
 "Plotly", "Streamlit",
 "Matplotlib", "Seaborn",
-"Chart.js", "Metabase"
+"Chart.js"
     ]
   },
 

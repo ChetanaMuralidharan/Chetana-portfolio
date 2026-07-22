@@ -1,5 +1,40 @@
 export default [
   {
+  id: "mira",
+  placeholderIcon: "🏥",
+  image: "mira.png",
+  github: "https://github.com/ChetanaMuralidharan/Mira",
+  title: "MIRA – Medical Intelligence and Reasoning Agent",
+  roles: ["ai", "ml", "data-eng"],
+  summary:
+    "Structured data tells you how many. Clinical guidelines tell you what to do next. MIRA connects both through a single multi-agent AI workflow.",
+  tech:
+    "LangGraph · MCP · DuckDB · dbt · PostgreSQL · pgvector · FastAPI · Streamlit · Airflow · Great Expectations · Delta Lake · MLflow",
+  kpis: [
+    "🏆 96% end-to-end benchmark accuracy (48/50) - 100% on SQL, RAG, and hybrid reasoning with zero retries",
+    "🤖 9-node LangGraph agent: intent → schema retrieval → Text-to-SQL → validation → RAG synthesis",
+    "🏥 5,760 synthetic patients · 178K lab results · 24 curated clinical guidelines across 14 disease areas",
+    "🔍 Hybrid pgvector + full-text search with RRF - resilient to medical acronyms that break vector-only retrieval"
+  ]
+},
+{
+  "id": "prudentia",
+  "placeholderIcon": "🏦",
+  "image": "prudentia.png",
+  "github": "https://github.com/ChetanaMuralidharan/Prudentia",
+  "title": "Prudentia – Explainable Credit Risk Decisioning Engine",
+  "roles": ["ml", "analytics", "data-eng"],
+  "summary":
+    "Any model can rank risk. Prudentia builds what comes after - calibrated decisions, Reg B reason codes, fairness audits, and drift monitoring.",
+  "tech": "XGBoost · Random Forest · Logistic Regression · scikit-learn · SHAP · WOE/IV · Probability Calibration · MLflow · FastAPI · Streamlit · Plotly",
+ kpis: [
+  "💳 1.3M loans · 4-model champion/challenger: WOE Scorecard · Random Forest · XGBoost · tuned via GridSearchCV",
+  "🎯 Compared Isotonic & Platt calibration using Brier score · optimized lending decisions across 79 PD cutoffs",
+  "⚖️ SHAP global + local explanations · generates plain English denial reason codes per applicant",
+  "📡 PSI monitoring across 8 quarterly vintages · 31 features tracked · auto-flags drifts"
+]
+},
+  {
     "id": "lineageiq",
     "placeholderIcon": "🔗",
     "image": "lineageiq.png",

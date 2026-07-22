@@ -42,7 +42,7 @@ export default function Education() {
           <div className="education-card-header">
             <div className="education-icon-badge badge-be">🎓</div>
             <div className="education-header-text">
-              <div className="education-degree">B.E., Computer Science & Engineering</div>
+              <div className="education-degree">B.S., Computer Science</div>
               <div className="education-school">Visvesvaraya Technological University</div>
             </div>
             <span className="education-gpa-badge gpa-be">GPA 8.5/10.00</span>
