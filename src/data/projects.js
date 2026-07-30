@@ -1,4 +1,22 @@
 export default [
+  
+  {
+  "id": "lineageiq",
+  "placeholderIcon": "🔗",
+  "image": "lineageiq.png",
+  "github": "https://github.com/ChetanaMuralidharan/Lineage-iq",
+  "title": "LineageIQ – Intelligent Data Observability & Change Risk Platform",
+  "roles": ["data-eng", "analytics", "ai"],
+  "summary": "Stop risky data changes before they break dashboards. LineageIQ predicts deployment risk and prioritizes production incidents.",
+  "tech": "Airflow · dbt · Snowflake · Python · Groq (Llama 3.3-70B) · Streamlit · Docker · NetworkX",
+  "kpis": [
+    "🔍 45-scenario benchmark · 100% severity compliance · 76% pre-deploy top-model accuracy · 20/20 reactive scenarios passed",
+    "🧠 Pre-deploy blast radius predictor · 13 dbt models · 5-layer Snowflake pipeline · CRITICAL-to-LOW impact report · ~3.6s median latency",
+    "⚡ Reactive incident ranker · 100% top-model accuracy · 12/12 monotonicity checks passed · 2.9s mean latency · 4 incident types",
+    "📊 Live Streamlit · pipeline health · incident trend · failure mix · MTTD/MTTR instrumentation · AI change analysis · 60s auto-refresh"
+  ]
+},
+  
   {
   id: "mira",
   placeholderIcon: "🏥",
@@ -17,6 +35,8 @@ export default [
     "🔍 Hybrid pgvector + full-text search with RRF - resilient to medical acronyms that break vector-only retrieval"
   ]
 },
+
+
 {
   "id": "prudentia",
   "placeholderIcon": "🏦",
@@ -34,23 +54,7 @@ export default [
   "📡 PSI monitoring across 8 quarterly vintages · 31 features tracked · auto-flags drifts"
 ]
 },
-  {
-    "id": "lineageiq",
-    "placeholderIcon": "🔗",
-    "image": "lineageiq.png",
-    "github": "https://github.com/ChetanaMuralidharan/Lineage-iq",
-    "title": "LineageIQ – Data Pipeline Observability & AI Blast Radius Engine",
-    "roles": ["data-eng", "analytics", "ai"],
-    "summary":
-      "Data teams find out pipelines are broken when dashboards go blank. LineageIQ tells you what will break before it does.",
-    "tech": "Airflow · dbt · Snowflake · Python · NetworkX · Claude API · Metabase · Docker",
-    "kpis": [
-      "🔍17 lineage nodes · 15 dependency edges parsed",
-      "🎛️ 5‑phase ETL + ELT + dbt + Airflow pipeline",
-      "🤖 LLM produces a CRITICAL-to-LOW blast radius report before anything downstream breaks",
-      "📈 Pipeline Health dashboard built in Metabase"
-    ]
-  },
+  
   {
     "id": "weavenet",
     "placeholderIcon": "🕸️",
@@ -68,23 +72,7 @@ export default [
       "⚡ 0.943 Recall@K at sub-100ms · 6–79× faster than Neo4j in index queries"
     ]
   },
-  {
-    "id": "agentlens",
-    "placeholderIcon": "🖼️",
-    "image": "agentlens.png",
-    "github": "https://github.com/ChetanaMuralidharan/AgentLens-Multimodal-MultiAgent-System",
-    "title": "AgentLens – Multimodal Multi‑Agent Image Understanding & Generation",
-    "roles": ["ai", "ml", "swe"],
-    "summary":
-      "\"Make this cinematic\" means nothing to a single model. Four specialized agents working in sequence means everything.",
-    "tech": "Python · Claude Sonnet · DALL-E 3 · CLIP · Anthropic API · Multi-agent orchestration",
-    "kpis": [
-      "👁️ Vision Agent reads the scene so the user doesn't have to describe it",
-      "✍️ Prompt Agent turns vague instructions into precise generation-ready prompts",
-      "🎨 DALL-E 3 generates the transformation, CLIP + LLM decides if it worked",
-      "🏆 4.4 to 5.0 / 5 across all test cases, every run an ACCEPT"
-    ]
-  },
+
   {
     "id": "doculens",
     "placeholderIcon": "📄",
@@ -135,6 +123,23 @@ export default [
       "📝 Mistral LLM auto-generates a human-readable incident report for every theft"
     ]
   },
+    {
+    "id": "quakealert",
+    "placeholderIcon": "🌎",
+    "image": "quakealert.png",
+    "github": "https://github.com/ChetanaMuralidharan/ai-powered-earthquake-alert-system",
+    "title": "AI‑Powered Earthquake Prediction & Alerting System",
+    "roles": ["data-eng", "ml", "analytics"],
+    "summary":
+      "Earthquakes don't warn you. This system does.",
+    "tech": "Apache Spark · PySpark · MLlib · Random Forest · VADER · Flask · USGS API · Python",
+    "kpis": [
+      "🎯R² 0.91 · RMSE 0.29 · MAE 0.21",
+      "⚡Dual batch + streaming Spark architecture",
+      "📰VADER sentiment + keyword NLP on news articles adds a human impact layer",
+      "🚨 Flask + Gmail API lets operators trigger enriched alerts in one click"
+    ]
+  },
   {
     "id": "neurospeak",
     "placeholderIcon": "🧠",
@@ -152,23 +157,24 @@ export default [
       "⚙️ Custom PyTorch pipeline handles electrode drift, Gaussian smoothing, and z-score normalization across 20 months of recordings"
     ]
   },
-  {
-    "id": "quakealert",
-    "placeholderIcon": "🌎",
-    "image": "quakealert.png",
-    "github": "https://github.com/ChetanaMuralidharan/ai-powered-earthquake-alert-system",
-    "title": "AI‑Powered Earthquake Prediction & Alerting System",
-    "roles": ["data-eng", "ml", "analytics"],
+    {
+    "id": "agentlens",
+    "placeholderIcon": "🖼️",
+    "image": "agentlens.png",
+    "github": "https://github.com/ChetanaMuralidharan/AgentLens-Multimodal-MultiAgent-System",
+    "title": "AgentLens – Multimodal Multi‑Agent Image Understanding & Generation",
+    "roles": ["ai", "ml", "swe"],
     "summary":
-      "Earthquakes don't warn you. This system does.",
-    "tech": "Apache Spark · PySpark · MLlib · Random Forest · VADER · Flask · USGS API · Python",
+      "\"Make this cinematic\" means nothing to a single model. Four specialized agents working in sequence means everything.",
+    "tech": "Python · Claude Sonnet · DALL-E 3 · CLIP · Anthropic API · Multi-agent orchestration",
     "kpis": [
-      "🎯R² 0.91 · RMSE 0.29 · MAE 0.21",
-      "⚡Dual batch + streaming Spark architecture",
-      "📰VADER sentiment + keyword NLP on news articles adds a human impact layer",
-      "🚨 Flask + Gmail API lets operators trigger enriched alerts in one click"
+      "👁️ Vision Agent reads the scene so the user doesn't have to describe it",
+      "✍️ Prompt Agent turns vague instructions into precise generation-ready prompts",
+      "🎨 DALL-E 3 generates the transformation, CLIP + LLM decides if it worked",
+      "🏆 4.4 to 5.0 / 5 across all test cases, every run an ACCEPT"
     ]
   },
+
   {
     "id": "travel-bot",
     "placeholderIcon": "✈️",
