@@ -1,22 +1,23 @@
 export default [
   
-  {
-  "id": "lineageiq",
-  "placeholderIcon": "🔗",
-  "image": "lineageiq.png",
-  "github": "https://github.com/ChetanaMuralidharan/Lineage-iq",
-  "title": "LineageIQ – Intelligent Data Observability & Change Risk Platform",
-  "roles": ["data-eng", "analytics", "ai"],
-  "summary": "Stop risky data changes before they break dashboards. LineageIQ predicts deployment risk and prioritizes production incidents.",
-  "tech": "Airflow · dbt · Snowflake · Python · Groq (Llama 3.3-70B) · Streamlit · Docker · NetworkX",
+{
+  "id": "slotrl",
+  "placeholderIcon": "🎰",
+  "image": "slotrl-reward-by-policy.png",
+  "github": "https://github.com/ChetanaMuralidharan/slotrl-appointment-overbooking",
+  "title": "SlotRL – Revenue-Aware Appointment Overbooking with Reinforcement Learning",
+  "roles": ["ml", "analytics", "swe"],
+  "summary":
+    "Built a decision system that predicts no-shows and optimizes appointment-slot assignments, balancing provider revenue, overtime risk, and fairness.",
+  "tech": "Python · XGBoost · Gymnasium · MaskablePPO · scikit-learn · Pandas · Bootstrap CIs · Wilcoxon Testing",
   "kpis": [
-    "🔍 45-scenario benchmark · 100% severity compliance · 76% pre-deploy top-model accuracy · 20/20 reactive scenarios passed",
-    "🧠 Pre-deploy blast radius predictor · 13 dbt models · 5-layer Snowflake pipeline · CRITICAL-to-LOW impact report · ~3.6s median latency",
-    "⚡ Reactive incident ranker · 100% top-model accuracy · 12/12 monotonicity checks passed · 2.9s mean latency · 4 incident types",
-    "📊 Live Streamlit · pipeline health · incident trend · failure mix · MTTD/MTTR instrumentation · AI change analysis · 60s auto-refresh"
+    "📈 XGBoost achieved 0.732 out-of-time ROC-AUC across 26,450 held-out appointments",
+    "💵 Expected-load heuristic generated $2,332/day versus $2,305/day mean PPO across 5 seeds",
+    "🧪 Evaluated 15 RL runs across paired 4,000-day simulations with statistical significance testing",
+    "⚖️ Quantified revenue–fairness tradeoffs across age and scholarship groups"
   ]
 },
-  
+
   {
   id: "mira",
   placeholderIcon: "🏥",
@@ -36,7 +37,6 @@ export default [
   ]
 },
 
-
 {
   "id": "prudentia",
   "placeholderIcon": "🏦",
@@ -54,7 +54,24 @@ export default [
   "📡 PSI monitoring across 8 quarterly vintages · 31 features tracked · auto-flags drifts"
 ]
 },
-  
+
+  {
+  "id": "lineageiq",
+  "placeholderIcon": "🔗",
+  "image": "lineageiq.png",
+  "github": "https://github.com/ChetanaMuralidharan/Lineage-iq",
+  "title": "LineageIQ – Intelligent Data Observability & Change Risk Platform",
+  "roles": ["data-eng", "analytics", "ai"],
+  "summary": "Stop risky data changes before they break dashboards. LineageIQ predicts deployment risk and prioritizes production incidents.",
+  "tech": "Airflow · dbt · Snowflake · Python · Groq (Llama 3.3-70B) · Streamlit · Docker · NetworkX",
+  "kpis": [
+    "🔍 45-scenario benchmark · 100% severity compliance · 76% pre-deploy top-model accuracy · 20/20 reactive scenarios passed",
+    "🧠 Pre-deploy blast radius predictor · 13 dbt models · 5-layer Snowflake pipeline · CRITICAL-to-LOW impact report · ~3.6s median latency",
+    "⚡ Reactive incident ranker · 100% top-model accuracy · 12/12 monotonicity checks passed · 2.9s mean latency · 4 incident types",
+    "📊 Live Streamlit · pipeline health · incident trend · failure mix · MTTD/MTTR instrumentation · AI change analysis · 60s auto-refresh"
+  ]
+},
+    
   {
     "id": "weavenet",
     "placeholderIcon": "🕸️",
